@@ -30,14 +30,14 @@ class Checkout
         item_count = 0
         @products.each do | product |
           # Count number of items
-          if product.item_code == rule["item_code"]
+          if product.item_code == rule["config"]["item_code"]
             item_count += 1
           end
         end
-        if item_count >= rule["amount"]
+        if item_count >= rule["config"]["amount"]
           @products.each do | product |
-            if product.item_code == rule["item_code"]
-              product.price = rule["new_price"]
+            if product.item_code == rule["config"]["item_code"]
+              product.price = rule["config"]["new_price"]
             end
           end
         end
@@ -53,8 +53,8 @@ class Checkout
         @products.each do |product|
           total += product.price
         end
-        if total >= rule["amount"]
-          total *= 1 - rule["discount"] # discount 10% = 90% of total to be payed
+        if total >= rule["config"]["amount"]
+          total *= 1 - rule["config"]["discount"] # discount 10% = 90% of total to be payed
         end
       end
     end

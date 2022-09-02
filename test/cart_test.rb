@@ -4,15 +4,19 @@ require_relative '../lib/checkout.rb'
 PROMOTIONAL_RULES = '
                   [
                     {
-                        "type": "spend",
-                        "amount": 60,
-                        "discount": 0.1
+                        "type": "buy",
+                        "config": {
+                                    "amount": 2,
+                                    "item_code": "001",
+                                    "new_price": 8.50
+                                  }
                     },
                     {
-                        "type": "buy",
-                        "amount": 2,
-                        "item_code": "001",
-                        "new_price": 8.5
+                        "type": "spend",
+                        "config": {
+                                    "amount": 60.00,
+                                    "discount": 0.1
+                                  }
                     }
                   ]'
 
