@@ -24,7 +24,8 @@ class Checkout
     @products << item
   end
 
-  def buy_refund
+  def total
+    total = 0
     promotional_rules.each do |rule|
       if rule["type"] == "buy"
         item_count = 0
@@ -42,28 +43,16 @@ class Checkout
           end
         end
       end
-    end
-  end
-
-  # amount to be eligible for discount
-  def spend_discount
-    total = 0
-    promotional_rules.each do |rule|
       if rule["type"] == "spend"
         @products.each do |product|
           total += product.price
         end
         if total >= rule["config"]["amount"]
-          total *= 1 - rule["config"]["discount"] # discount 10% = 90% of total to be payed
+          total *= 1 - rule["config"]["discount"]
         end
       end
     end
     total.round(2)
-  end
-
-  def total
-    buy_refund
-    spend_discount
   end
 end
 
