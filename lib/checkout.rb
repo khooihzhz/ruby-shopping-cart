@@ -22,16 +22,19 @@ class Checkout
   end
 
   def total
-    promotional_rules.each do |rule|
-      @products = PROMOTIONAL_RULES_CLASS[rule["type"]].new(rule["config"]).process(@products)
-    end
-
+    process
     total_price = 0
     @products.each do |product|
-      total_price += product.price 
+      total_price += product.price
     end
 
     total_price.round(2)
+  end
+
+  def process
+    promotional_rules.each do |rule|
+      @products = PROMOTIONAL_RULES_CLASS[rule["type"]].new(rule["config"]).process(@products)
+    end
   end
 end
 
