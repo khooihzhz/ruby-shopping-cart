@@ -1,7 +1,6 @@
 require 'minitest/autorun'
 require_relative '../lib/checkout.rb'
 require_relative '../lib/item.rb'
-require_relative '../lib/promotional_rules.rb'
 require_relative '../lib/promotional_rules/buy.rb'
 require_relative '../lib/promotional_rules/spend.rb'
 

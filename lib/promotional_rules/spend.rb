@@ -1,4 +1,4 @@
-class PromotionalRules::Spend
+class PromotionalRulesSpend
   def initialize(config)
     @amount = config["amount"]
     @discount = config["discount"]

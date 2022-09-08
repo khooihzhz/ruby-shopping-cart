@@ -1,4 +1,4 @@
-class PromotionalRules::Buy
+class PromotionalRulesBuy
   def initialize(config)
     @amount = config["amount"]
     @item_code = config["item_code"]
