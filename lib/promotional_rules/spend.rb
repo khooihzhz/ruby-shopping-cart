@@ -6,17 +6,25 @@ class PromotionalRulesSpend
 
   # This is an array of items
   def process(products)
+    if total_price(products) >= @amount
+      products.each do |product|
+        discount_product(product)
+      end
+    end
+
+    products
+  end
+
+  def total_price(products)
     total_price = 0
     products.each do |product|
       total_price += product.price
     end
 
-    # Apply Discount if Valid
-    if total_price >= @amount
-      products.each do |product|
-        product.price *= 1 - @discount
-      end
-    end
-    products
+    total_price
+  end
+
+  def discount_product(product)
+    product.price *= 1 - @discount
   end
 end

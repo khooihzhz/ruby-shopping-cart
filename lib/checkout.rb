@@ -2,10 +2,13 @@
 require 'json'
 require_relative 'promotional_rules/buy.rb'
 require_relative 'promotional_rules/spend.rb'
+require_relative 'promotional_rules/free.rb'
+
 
 PROMOTIONAL_RULES_CLASS = {
   'buy' => PromotionalRulesBuy,
   'spend' => PromotionalRulesSpend,
+  'free' => PromotionalRulesFree
 }
 
 class Checkout
